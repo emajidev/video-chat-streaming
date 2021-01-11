@@ -1,10 +1,10 @@
 # video-chat-streaming
 
-# Ejecución de ejemplo.
+## Ejecución de ejemplo.
 
     clona el repositorio  luego ejecuta`npm install` y por ultimo `npm run deploy`
 
-# Estructura de funcionamiento
+### Estructura de funcionamiento
 Web Real-Time Communication (WebRTC), o “comunicación en tiempo real mediante web. Esto estaconstruido bajo unos protocolos que permiten la comunicacion entre los pares conectados.
 
 lnk:https://developer.mozilla.org/es/docs/Web/API/WebRTC_API/Protocols
@@ -24,9 +24,9 @@ En dado ejemplo la coneccion del abonado C se detecta en la sala por lo que A y 
 ##### CHAT .
 
 Luego para la arquitetura del chat se trata de una arquitectura de estrella donde el servidor orquesta las comunicaciones como mediador al recibir un mensaje y luego realizar un broadcast multidifucion a todos los pares conectados dentro de la red de la sala.
-## 1.Configuración de servidor 
+### 1.Configuración de servidor 
 
-## 2.Configuración de servidor P2P 
+### 2.Configuración de servidor P2P 
 
 ## 3. Logica de creador de la sala
 
