@@ -32,4 +32,3 @@ Luego para la arquitetura del chat se trata de una arquitectura de estrella dond
 
 ### 4.Logica del espectador
 
-Primero comenzaremos con la creación de una cuenta en facebook developer. Una vez realizado esto crearás una nueva app.
