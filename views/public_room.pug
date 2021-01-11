@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+    head
+        style
+            include style.css
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script( src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer)
+        script( src="/socket.io/socket.io.js" defer)
+        script( src="p2p.js")
+        script( src="logic_spectator.js" defer)
+        script( src="/jquery/jquery.min.js" defer)
+        script( src="/bootstrap/js/bootstrap.js" defer)
+        script( src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous")
+        link( rel="stylesheet" href="/bootstrap/css/bootstrap.css" defer)
+
+
+        script.
+            const ROOM_ID = !{roomId};
+            console.log("ROOM_ID",ROOM_ID)
+        title Document
+    body
+        .container
+            .row.justify-content-center
+                .col-md-12.text-center
+                    h1 sala del publico
+                .row.col-md-12
+                    p.mb-0.text-primary Mi ID:  
+                    p.mb-0.text-primary#displayId   
+                    
+                    .input-group.mt-2
+                            input( id="name_user" type="text" class="form-control"  placeholder="nombre de usuario" aria-label="Recipient's username" aria-describedby="basic-addon2")
+                            input( id="connId" type="text" class="form-control"  placeholder="ID de invitado" aria-label="Recipient's username" aria-describedby="basic-addon2")
+                            .input-group-append
+                                button( id="conn_button" type="button" class="btn btn-outline-secondary") Conectar
+                    
+                    .col-md-12.p-0.card.bg-light
+                        .card-body#container-video
+                            //-video(id="lVideo" class="col-6" autoplay="autoplay")
+                                video(id="rVideo" class="col-6" autoplay="autoplay")
+                        .col Transmision en vivo:   
+
+                    
+                    //------ CHAT -------
+                    .col-md-12
+                        #chat.list-group
+                            div(class="list-group-item active") CHAT
+                            div(class="list-group-item" style="height:80px" )
+                                #messages-container
+                                ul#messages.list-group
+                        .input-group
+                            input( id="msg-chat" type="text" class="form-control"  placeholder="Escribe un mensaje..." aria-label="Recipient's username" aria-describedby="basic-addon2")
+                            .input-group-append
+                                button( id="btn-send-msg" type="button" class="btn btn-outline-secondary") ENVIAR

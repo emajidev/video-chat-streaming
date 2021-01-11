@@ -1,0 +1,59 @@
+#video-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,50%);
+    grid-auto-rows: 100%;
+    width: 100%;
+    height: 100%;
+  
+}
+video,#img-create{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*ANIMACION DE PUNTO TITILANDO */
+.icon-live{
+    width: 8px;
+    height: 8px;
+    border-radius: 40px;
+    background-color: white;
+}
+.card-webcam{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parpadea {
+  
+    animation-name: parpadeo;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+  @-moz-keyframes parpadeo{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  
+  @-webkit-keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+  }
+  
+  @keyframes parpadeo {  
+    0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+.hide{
+  display: none;
+}

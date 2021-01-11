@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        style
+            include style.css
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script( src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer)
+        script( src="/socket.io/socket.io.js" defer)
+        script( src="/jquery/jquery.js" defer)
+        script( src="/bootstrap/js/bootstrap.js" defer)
+        link( rel="stylesheet" href="/bootstrap/css/bootstrap.css" defer)
+
+       
+        title Menu
+    body
+        .container
+            .row
+                .col-md-12.text-center
+                    h1 Menu de opciones
+                    h4#myId
+                //-- VIEWER VIDEO ---
+                .col-md-12
+                    a( id="join" href="join" role="button" class="btn btn-primary") UNIRSE
+                    a( id="create" href="create" role="button" class="btn btn-secondary") CREAR
+
+                            

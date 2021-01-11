@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        style
+            include style.css
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script( src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer)
+        script( src="/socket.io/socket.io.js" defer)
+        script( src="/jquery/jquery.js" defer)
+        script( src="p2p.js")
+        //-script( src="listConference.js" defer)
+        script( src="logic_spectator.js" defer)
+        script( src="/jquery/jquery.min.js" defer)
+        script( src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous")
+        script( src="/bootstrap/js/bootstrap.js" defer)
+        link( rel="stylesheet" href="/bootstrap/css/bootstrap.css" defer)
+
+       
+        title join
+    body
+        
+        .container
+            .row
+                include /components/list.pug
+                include /components/viewer.pug

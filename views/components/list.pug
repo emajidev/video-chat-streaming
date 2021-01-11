@@ -1,0 +1,27 @@
+#list-conferences
+    .col-md-12.text-center
+        h1 UNIRSE A UNA VIDEO CONFERENCIA 
+
+        .input-group.mb-3
+            .input-group-append
+                span(class="input-group-text" id="basic-addon2") Buscar
+            input(type="text" class="form-control" placeholder="ejmp.. Dr.Carlos Jose" aria-label="ejmp.. Dr.Carlos Jose" aria-describedby="basic-addon1")
+            
+        div(class="btn-group mt-0 " role="group" aria-label="Basic outlined example")
+            button(type="button" class="btn btn-outline-primary") Tema
+            button(type="button" class="btn btn-outline-primary") Exponente
+            button(type="button" class="btn btn-outline-primary") ID
+    //-MUESTRA LAS PUBLICACIONES ACTUALES
+    .row.mt-2#list-conference
+        //-.card(style="width: 18rem;")
+            img( src="/img/streaming.jpg" class="card-img-top" alt="...")
+            .card-body
+                h5(class="card-title") Covid 
+                h6(class="card-subtitle mb-2 text-muted") Por: Dr.Jose Luis
+                p(class="card-text") Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                
+                a(href="#" class="btn btn-danger") 
+                    .row.m-1
+                        h6.m-1 EN VIVO
+                        .icon-live.parpadea.m-1
+        

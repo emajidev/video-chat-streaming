@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+    head
+        style
+            include style.css
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script( src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer)
+        script( src="/socket.io/socket.io.js" defer)
+        script( src="/jquery/jquery.js" defer)
+        script( src="/bootstrap/js/bootstrap.js" defer)
+        link( rel="stylesheet" href="/bootstrap/css/bootstrap.css" defer)
+
+       
+        title create
+    body
+        .container
+            .row.mt-5
+                .col-md-6.text-center
+                    h1 CREAR VIDEO CONFERENCIA
+                    .input-group.mb-3
+                        .input-group-append
+                            span(class="input-group-text" id="basic-addon2") Nombre
+                        input(type="text" class="form-control" placeholder="ejmp.. Dr.Carlos Jose" aria-label="ejmp.. Dr.Carlos Jose" aria-describedby="basic-addon1")
+                    .input-group.mb-3
+                        .input-group-append
+                            span(class="input-group-text" id="basic-addon2") Titulo
+                        input(type="text" class="form-control" placeholder="ejmp..La cienci de las cosas" aria-label="Username" aria-describedby="basic-addon1")
+                        
+                    .input-group.mb-3
+                        .input-group-append
+                            span(class="input-group-text" id="basic-addon2") @email   
+                        input(type="text" class="form-control" placeholder="example@.com" aria-label="Username" aria-describedby="basic-addon1")
+                    
+                    .input-group.mb-3
+                        .input-group-append
+                            span(class="input-group-text" id="basic-addon2") Telefono
+                        input(type="phone" class="form-control" placeholder="ejmp...04169029089" aria-label="Username" aria-describedby="basic-addon1")
+                    .input-group.mb-3
+                        textarea(class="form-control" placeholder="Breve descripcion" aria-label="With textarea")
+                    
+                    .input-group-append
+                            span(class="input-group-text" id="basic-addon2") FOTO PORTADA
+                            button(type="button" class="btn btn-outline-primary") SUBIR
+
+                    a(role="button"  href="myroom"  class="btn btn-primary btn-lg btn-block  mt-4") TRANSMITIR
+
+                .col-md-6.text-center
+                    img(src="/img/streming.jpg" id="img-create" class="img-fluid" alt="Responsive image")
