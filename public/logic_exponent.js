@@ -9,7 +9,9 @@ let my_peer_id;
 let peer_id;
 let users = [];
 let peerList = [];
+let recordedBlobs
 let currentPeer;
+let mediaRecorder
 // video chat
 // PETICION DE PERMISOS PARA CAMARA Y MICROFONO
 function getVideo(callbacks){
@@ -26,6 +28,10 @@ getVideo({
   success:function(stream){
     window.localStream = stream;
     console.log("my video",stream)
+     let options = {
+    mimeType:'video/webm;codecs=vp9,opus'
+  }
+    mediaRecorder = new MediaRecorder( window.localStream,options);
     recStream(stream,"lVideo")
   },
   error:function(error){
@@ -58,6 +64,47 @@ $("#start-share-scream").on("click",()=>{
 $("#stop-share-scream").on("click",()=>{
   stop_share_screen();
 })
+$("#recorder").on("click",()=>{
+  recordedBlobs = [];
+ 
+  console.log(window.localStream)
+  mediaRecorder.ondataavailable = handleDataAvailable;  
+ 
+  mediaRecorder.start();
+  console.log(mediaRecorder.state);
+  console.log("recorder start");
+
+})
+$("#recorder-download").on("click",()=>{
+    download()
+})
+$("#recorder-stop").on("click",()=>{
+  mediaRecorder.stop();
+  console.log(mediaRecorder.state);
+  console.log("recorder stop");
+})
+
+function handleDataAvailable(event){
+  if(event.data && event.data.size > 0){
+     recordedBlobs.push(event.data)
+  }
+}
+async function download() {
+  var blob = await new Blob(recordedBlobs, {
+    type: "video/webm;codecs=vp9,opus"
+  });
+  var url = await URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  document.body.appendChild(a);
+  a.style = "display: none";
+  a.href = url;
+  a.download = "test.webm";
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
+
+
 // RESPUESTA DEL INVITADO REMOTO
 peer.on("call",function(call){
   var acceptsCall = confirm("Quieres aceptar la llamada?");
