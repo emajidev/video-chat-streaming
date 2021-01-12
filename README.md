@@ -2,7 +2,7 @@
 
 ## Ejecución de ejemplo.
 
-    clona el repositorio  luego ejecuta`npm install` y por ultimo `npm run deploy`
+    clona el repositorio  luego ejecuta`npm install, por ultimo `npm start y  peerjs --port 3001
 
 ### Estructura de funcionamiento
 Web Real-Time Communication (WebRTC), o “comunicación en tiempo real mediante web. Esto estaconstruido bajo unos protocolos que permiten la comunicacion entre los pares conectados.
@@ -28,11 +28,5 @@ Luego para la arquitetura del chat se trata de una arquitectura de estrella dond
 
 ![sample2](https://github.com/emajidev/video-chat-streaming/blob/main/star.jpeg?raw=true)
 
-### 1.Configuración de servidor 
 
-### 2.Configuración de servidor P2P 
-
-### 3. Logica de creador de la sala
-
-### 4.Logica del espectador
 
