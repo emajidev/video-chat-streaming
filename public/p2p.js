@@ -1,15 +1,18 @@
-
+// INIcIALIZACION DE SERVIDOR P"P
 class P2p{ 
     static stream = null;
     
     static peer(){
-        const peer = new Peer(undefined, {
+        // configuracion 
+        let config = {
             host: "/",
             port: "3001",
-          });
-          console.log("peer",peer)
+          }
+        //Inicializacion de nuevo serviio Peer
+        const peer = new Peer(undefined, config);
         return peer
     }
+    // Optien permiso para el uso de la camara y el microfono
     static _stream(){
         navigator.mediaDevices
         .getUserMedia({
@@ -17,9 +20,7 @@ class P2p{
             audio: true,
         })
         .then((stream) => {
-            // when initializing web-cam show it in video
             P2p.stream = stream;
-            // when answer the call is exists render the other user
         });
     }
 }

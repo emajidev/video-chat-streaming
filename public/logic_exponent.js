@@ -23,15 +23,10 @@ function getVideo(callbacks){
   navigator.getUserMedia(constrains,callbacks.success,callbacks.error)
 
 }
-
+// CALLBACKS
 getVideo({
   success:function(stream){
     window.localStream = stream;
-    console.log("my video",stream)
-     let options = {
-    mimeType:'video/webm;codecs=vp9,opus'
-  }
-    mediaRecorder = new MediaRecorder( window.localStream,options);
     recStream(stream,"lVideo")
   },
   error:function(error){
@@ -65,14 +60,39 @@ $("#stop-share-scream").on("click",()=>{
   stop_share_screen();
 })
 $("#recorder").on("click",()=>{
-  recordedBlobs = [];
  
-  console.log(window.localStream)
-  mediaRecorder.ondataavailable = handleDataAvailable;  
+  navigator.mediaDevices.getDisplayMedia({
+    video:{cursor:"always", mediaSource: "screen"},
+    audio:{
+      echoCancellation:true,
+      noiseSuppression:true
+    }}).then((stream)=>{
+        console.log(stream)
+        console.log("stream screen",stream)
+        console.log("currentPeer screen",currentPeer)
+
+        let videoTrack = stream.getVideoTracks()[0].getSettings().displaySurface;;
+        stream.getTracks().forEach(function(track) {
+          console.log(track)
+        })
+        let options = {
+          mimeType:'video/webm;codecs=vp9,opus'
+        }
+
+        
+        mediaRecorder = new MediaRecorder(stream,options);
+        recordedBlobs = [];
  
-  mediaRecorder.start();
-  console.log(mediaRecorder.state);
-  console.log("recorder start");
+        console.log(window.localStream)
+        mediaRecorder.ondataavailable = handleDataAvailable;  
+       
+        mediaRecorder.start();
+        console.log(mediaRecorder.state);
+        console.log("recorder start");
+    }).catch((e)=>{
+      console.log(e)
+    })
+
 
 })
 $("#recorder-download").on("click",()=>{
@@ -113,9 +133,9 @@ peer.on("call",function(call){
     call.answer(window.localStream);
     call.on("stream",function(stream){
       window.peer_stream = stream;
-      console.log("stream2",stream)
+      //console.log("stream2",stream)
       currentPeer = call.peerConnection;
-      console.log("currentPeer remote",currentPeer)
+      //console.log("currentPeer remote",currentPeer)
 
       recStream(stream,"rVideo")
     });
@@ -200,17 +220,17 @@ function template_users_conn(dataUser){
 
 // LLAMADA DE USUARIO PARA VIDEOCONFERENCIA
 function call_peer_id(peer_id,localStream,elementId){
-  console.log("llamando")
+  //console.log("llamando")
   var call = peer.call(peer_id,localStream)
   call.on("stream",(stream)=>{
-    console.log("stream",stream)
+    //console.log("stream",stream)
     if(!peerList.includes(call.peer)){
       recStream(stream,elementId);
       window.peer_stream = stream;
       currentPeer = call.peerConnection; // <--- revisar esto
-      console.log("currentPeer",currentPeer)
+      //console.log("currentPeer",currentPeer)
       peerList.push(call.peer);
-      console.log("peerList",peerList)
+      //console.log("peerList",peerList)
     }
   })
 }
@@ -238,6 +258,7 @@ function start_share_screen(){
         let sender = currentPeer.getSenders().find((s)=>{
           return s.track.kind == videoTrack.kind
         })
+        // remplazar el video actual
         sender.replaceTrack(videoTrack)
     }).catch((e)=>{
       console.log(e)
@@ -256,5 +277,6 @@ function stop_share_screen(){
   let sender = currentPeer.getSenders().find((s)=>{
     return s.track.kind == videoTrack.kind;
   })
+  // remplazar el video actual
   sender.replaceTrack(videoTrack)
 }

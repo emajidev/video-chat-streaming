@@ -6,7 +6,6 @@ const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
 app.set('view engine', 'pug')
-//app.use(express.static('public'))
 app.use(express.static(__dirname + '/public'));
 app.locals.basedir = path.join(__dirname, 'views');
 
@@ -18,7 +17,7 @@ app.use('/',require('./router/routers'))
 
 io.on('connection', socket => {
   //console.log("identificador",socket.id)
-    // connection room and interaction 
+    // Conexión a sala de video conferencia
     socket.on('join-room', (roomId, dataUser) => {
       socket.join(roomId)
       socket.to(roomId).broadcast.emit('user-connected', dataUser, socket.id)
@@ -27,6 +26,7 @@ io.on('connection', socket => {
         socket.to(roomId).broadcast.emit('user-disconnected', dataUser)
       })
     })
+    //Respuesta de conexión
     socket.on("resp-conn",(data,socket_id)=>{
       console.log("resp-conn",data)
       io.sockets.to(socket_id).emit("resp-conference",data)

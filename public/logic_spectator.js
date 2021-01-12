@@ -43,20 +43,7 @@ peer.on("call",function(call){
     })
 
 })
-
-/* $("#conn_button").on("click",()=>{
-    console.log("conectando")
-    let roomId   = $("#connId").val()
-    let name     = $("#name_user").val()
-    let dataUser = {name,id:yourPeerId}
-    socket.emit("join-room", roomId, dataUser);
-  
-    socket.on("resp-conference",(resp) => {
-        console.log("resp conference",resp)
-          
-
-    })
-}) */
+// CONEXION A SALA DE VIODEO CONFERENCIA
 function connection_room(id_room){
     let roomId   = id_room;
     let name     = $("#name_user").val();
@@ -69,6 +56,7 @@ function connection_room(id_room){
         console.log("resp conference",resp);
     })
 }
+// FUNCION PARA MOSTRAR VIDEO CONFERENCIA EN PANTALLA
 function recStream(stream,elemId){
     var video   = document.createElement("video")
     let content = document.getElementById("container-video")
@@ -87,6 +75,8 @@ function recStream(stream,elemId){
 $(function() {    
     get_data_room();
 });
+// cuando una nueva sala de publica se envia una señal de actualizacion 
+//por el exponente a la pagina y esta al recibirla se actualiza
 socket.on("update-list-rooms",(msg)=>{
     console.log("LIST ROOMS",msg);
     get_data_room();
